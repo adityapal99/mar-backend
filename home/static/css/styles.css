@@ -1,0 +1,118 @@
+.jumbo .tl {
+  padding-left: 20px;
+}
+
+.nav-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.nav-buttons a {
+  display: inline;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-buttons a button {
+  display: inline;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btn-color-1 {
+  background-image: -webkit-gradient(linear, left top, right top, from(#4242f7), to(#4100bb));
+  background-image: linear-gradient(to right, #4242f7, #4100bb);
+  color: white;
+}
+
+.btn-color-1:hover {
+  color: white;
+  background-image: -webkit-gradient(linear, left top, right top, from(#2e2eb9), to(#1e0057));
+  background-image: linear-gradient(to right, #2e2eb9, #1e0057);
+}
+
+.btn-color-2 {
+  background-image: -webkit-gradient(linear, left top, right top, from(#c442f7), to(#6700bb));
+  background-image: linear-gradient(to right, #c442f7, #6700bb);
+  color: white;
+}
+
+.btn-color-2:hover {
+  color: white;
+  background-image: -webkit-gradient(linear, left top, right top, from(#662181), to(#3d006e));
+  background-image: linear-gradient(to right, #662181, #3d006e);
+}
+
+.btn-color-black {
+  background-image: -webkit-gradient(linear, left top, right top, from(#575757), to(#353535));
+  background-image: linear-gradient(to right, #575757, #353535);
+  color: white;
+}
+
+.btn-color-black:hover {
+  color: white;
+}
+
+.btn-size-custom {
+  font-size: 10px;
+  width: auto;
+  height: auto;
+}
+
+.btn-size-custom svg {
+  width: auto;
+  margin-top: -2px;
+  height: 10px;
+  margin-right: 5px;
+}
+
+.btn-size-custom-1 {
+  font-size: 10px;
+  height: auto;
+  width: 120px;
+}
+
+.btn-size-custom-1 svg {
+  margin-top: -2px;
+  width: auto;
+  height: 10px;
+  margin-right: 5px;
+}
+
+.form-notch {
+  display: hidden;
+}
+
+.underline {
+  border-bottom: 1px solid #34375e;
+}
+
+.custom-select-sass {
+  width: 400px !important;
+}
+
+.clickableRows {
+  cursor: pointer;
+}
+
+.logoImg {
+  height: 50px;
+  width: auto;
+}
+/*# sourceMappingURL=styles.css.map */

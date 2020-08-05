@@ -1,0 +1,22 @@
+{% extends 'home/home.html' %}
+{% block title %}
+Sign UP
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-lg-3 ml-auto mt-5 mr-5 mb-5">
+        <form action="/student/signup/" method="post">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="form-outline mb-3">
+                    {{ field }} <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Sign UP</button>
+        </form>
+    </div>
+
+{% endblock content %}

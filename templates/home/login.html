@@ -1,0 +1,27 @@
+{% extends 'home/home.html' %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block content %}
+
+    <div class="col-lg-3 ml-auto mt-5 mr-5 mb-5 col-sm-10 ml-md-auto loginform">
+        <form action="/student/login/" method="post">
+            {% csrf_token %}
+
+            {% for field in sform %}
+                <div class="form-outline mb-3">
+                    {{ field }} <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                </div>
+            {% endfor %}
+
+            <div class="alert alert-danger pt-4 {{ typeOfError }}" role="alert">
+                {{ error }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+
+{% endblock content  %}

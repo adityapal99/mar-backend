@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>{% block title %}
+			Home
+		{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mdb5/mdb5/css/mdb.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+	
+	</script>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-white">
+			<div class="container container-fluid justify-content-center">
+				<a class="navbar-brand" href="#"><img src="https://jiscollege.ac.in/assets/images/logo.png" alt="JIS College of Engineering" class="logoImg"></a>
+				<button
+					class="navbar-toggler ml-auto"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-controls="navbar"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse justify-content-spacearound" id="navbar">
+					<ul class="navbar-nav mr-auto mb-2 mb-lg-0 justify-content-center">
+						<li class="nav-item active">
+							<a class="nav-link" aria-current="page" href="/">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/{{ user }}/dashboard/">Dashboard</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Top List</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">MOOCs Links</a>
+						</li>
+					</ul>
+					<div class="nav-buttons">
+
+							{% if not loggedIn %}
+								<button type="button" class="btn btn-rounded ripple z-depth-1a btn-color-1" data-toggle="modal" data-target="#centralModalSm"><b>Login</b></button>
+							{% endif %}
+							{% if loggedIn %}
+								<a href="/logout/"><button type="button" class="btn btn-rounded ripple z-depth-1a btn-color-1"><b>Logout</b></button></a>
+							{% endif %}
+
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+
+
+
+
+	{% if not loggedIn %}
+		<div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog cascading-modal" role="document">
+				<!--Content-->
+				<div class="modal-content">
+
+					<!--Modal cascading tabs-->
+					<div class="modal-c-tabs">
+
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3 justify-content-center" role="tablist">
+							<li class="nav-item waves-effect waves-light">
+								<a class="nav-link active" data-toggle="tab" href="#panel17" role="tab" aria-selected="true">
+								<i class="fas fa-user mr-1"></i>Student</a>
+							</li>
+							<li class="nav-item waves-effect waves-light">
+								<a class="nav-link" data-toggle="tab" href="#panel18" role="tab" aria-selected="false">
+								<i class="fas fa-user mr-1"></i>Teacher</a>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Tab panels -->
+					<div class="tab-content">
+						<!--Panel 17-->
+						<div class="tab-pane fade in active show" id="panel17" role="tabpanel">
+
+						<!--Body-->
+						<div class="modal-body mb-1">
+							<div class="col-lg-10 ml-auto mt-5 mr-5 mb-5 col-sm-10 ml-md-auto loginform">
+								<form action="/student/login/" method="post">
+										{% csrf_token %}
+
+										{% for field in sform %}
+												<div class="form-outline mb-3 underline">
+														{{ field }} <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+												</div>
+										{% endfor %}
+
+										<div class="alert alert-danger pt-4 {{ typeOfError }}" role="alert">
+												{{ error }}
+										</div>
+
+									<div class="text-center form-sm mt-4">
+										<button type="submit" class="btn btn-block btn-color-1 btn-rounded z-depth-1a"><b>Login as Student</b></button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--Footer-->
+						<div class="modal-footer">
+							<div class="options text-center text-md-right mt-1">
+							<p>Forgot
+								<a href="#" class="blue-text">Password?</a>
+							</p>
+							</div>
+							<button type="button" class="btn btn-outline-info btn-rounded waves-effect ml-auto" data-dismiss="modal">Close</button>
+						</div>
+
+					</div>
+					<!--/.Panel 7-->
+
+					<!--Panel 18-->
+					<div class="tab-pane fade" id="panel18" role="tabpanel">
+
+						<!--Body-->
+						<div class="modal-body">
+							<div class="col-lg-10 ml-auto mt-5 mr-5 mb-5 col-sm-10 ml-md-auto loginform">
+								<form action="/teacher/login/" method="post">
+										{% csrf_token %}
+
+										{% for field in tform %}
+												<div class="form-outline mb-3 underline">
+														{{ field }} <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+												</div>
+										{% endfor %}
+
+										<div class="alert alert-danger pt-4 {{ typeOfError }}" role="alert">
+												{{ error }}
+										</div>
+
+									<div class="text-center form-sm mt-4">
+										<button type="submit" class="btn btn-block btn-color-2 btn-rounded z-depth-1a"><b>Login as Teacher</b></button>
+
+									</div>
+								</form>
+							</div>
+						</div>
+						
+						<!--Footer-->
+						<div class="modal-footer">
+							<div class="options text-right">
+							<p>Forgot
+								<a href="#" class="blue-text">Password?</a>
+							</p>
+							</div>
+							<button type="button" class="btn btn-outline-info btn-rounded waves-effect ml-auto" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!--/.Panel 8-->
+				</div>
+			</div>
+		</div>
+		<!--/.Content-->
+		</div>
+		</div>
+		</div>
+		{% endif %}
+
+
+
+  	<!-- Jumbotron -->
+	<div class="container mt-5 mb-5">
+	{% block content %}
+		<div class="p-5 text-center jumbo" style="background-color: #fbfbfb;">
+			<h1 class="mb-3">Portal for Mandatory Additional Requirements</h1>
+			<h4 class="mb-3">In partial modification with the notice dated 11 June 2018 regarding Mandatory Additional Requirement
+				(MAR) for earning UG degree, the following modifications/clarifications have been made, which would be
+				effective from the present semester. <a href="https://makautwb.ac.in/datas/users/0-mar%20notice%20vc%20final.pdf" class="" data-toggle="tooltip" title="Download the official notice from MAKAUT">more info...</a> </h4>
+				<div class="nav-buttons">
+					{% if not loggedIn %}
+						<button type="button" class="btn btn-rounded ripple z-depth-1a btn-color-1" data-toggle="modal" data-target="#centralModalSm"><b>Login</b></button>
+					{% endif %}
+					{% if loggedIn %}
+						<a href="/logout/"><button type="button" class="btn btn-rounded ripple z-depth-1a btn-color-1"><b>Logout</b></button></a>
+					{% endif %}
+				</div>
+		</div>
+	{% endblock %}
+	</div>
+
+
+
+
+
+
+
+
+
+	<footer class="bg-light text-dark">
+
+		<!-- Grid container -->
+		<div class="container p-4">
+
+			<!--Grid row-->
+			<div class="row">
+
+				<!--Grid column-->
+				<div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+
+					<h4 class="text-uppercase">Quick <b>Contact</b></h4>
+
+					<p>
+						Block A, Phase III, <br>
+						Kalyani, Nadia - 741235 West Bengal <br>
+						<b>Information Center:</b> <a href="tel:033 2582 2138">033 2582 2138</a><br>
+						<b>Admission Cell:</b> <a href="tel:03325808640">03325808640</a> / <a href="tel:03325808560">03325808560</a> / <a href="tel:9432011490">9432011490</a> / <a href="tel:8697743363">8697743363</a>
+						<a href="http://www.jiscollege.ac.in">	<b>www.jiscollege.ac.in</b> </a><br>
+						<a href="mailto:info.jiscollege@jisgroup.org"> <b>info.jiscollege@jisgroup.org</b> </a> <br>
+					</p>
+
+				</div>
+
+
+				<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+					
+				</div>
+				<!--Grid column-->
+
+				<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h4>Quick <strong>Links</strong></h4>
+						<ul class="list-unstyled">
+								<li><a class="block" href="feedback.php">QUICK FEEDBACK</a></li>
+								<li><a class="block" href="https://alumni.jiscollege.ac.in" target="_blank">JISCE ALUMNI</a></li>
+								<li><a class="block" href="nirf.php" target="_blank">NIRF 2020</a></li>
+								<li><a class="block" href="https://jiscollege.ac.in/pdf/ARI-C-6260-submitted-31-10-19.pdf" target="_blank">ARIIA 2020</a></li>
+								<li><a class="block" href="http://www.mhrdnats.gov.in/" target="_blank"> MHRD NATS</a></li>
+							
+								<li><a class="block" href="campus-map.php">CAMPUS MAP</a></li>
+										<li><a class="block" href="campus-tour/index.html" target="_blank">CAMPUS TOUR</a></li>
+										
+										<li><a class="block" href="photo-gallery.php">GALLERY</a></li>
+								<li><a class="block" href="http://jisogrms.co.in/ogrmsjisce/" target="_blank">GRINVANCE REDRESSAL</a></li>
+							<li><a class="block" href="https://arividam.wordpress.com/" target="_blank">BLOG</a></li>
+						</ul>
+				</div>
+				<!--Grid column-->
+			</div>
+		<!-- Grid container -->
+
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: rgba(0,0,0,0.2);">© 2020
+			Copyright:
+			<a class="text-dark" href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+		</div>
+		<!-- Copyright -->
+
+	</footer>
+
+
+
+	<script src="{% static 'mdb5/mdb5/js/mdb.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script>
+		var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+			return new mdb.Tooltip(tooltipTriggerEl)
+		})
+
+	</script>
+
+</body>
+</html>
