@@ -1,0 +1,1 @@
+web: gunicorn MAARPage.wsgi:application --log-file -
