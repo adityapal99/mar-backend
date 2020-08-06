@@ -10,10 +10,12 @@ class Mentor(models.Model):
     auth = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
 
+
 class Catagories(models.Model):
     catName = models.CharField(max_length=500)
     point = models.IntegerField(default=0)
     maxPoints = models.IntegerField()
+    time_spent = models.IntegerField(null=True)
 
     def __str__(self):
         return self.catName
@@ -32,9 +34,9 @@ class Student(models.Model):
 
 class StudentData(models.Model):
     for_student = models.ForeignKey(Student, related_name='student_data', on_delete=models.CASCADE)
-    linkToProof = models.CharField(max_length=2000)
+    linkToProof = models.TextField()
     catagory = models.ForeignKey(Catagories, related_name='catagory', on_delete=models.CASCADE)
-    desc_by_student = models.TextField(max_length=160)
+    desc_by_student = models.TextField()
     submissiondate = models.DateTimeField(auto_now_add=True)
     checkedByTeacher = models.BooleanField(default=False)
     def __str__(self):

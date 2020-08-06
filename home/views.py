@@ -100,7 +100,7 @@ class StudentDashboardPage(View):
             'tform': StudentLoginPage.tform, 
             'typeOfError': 'd-none',
             'loggedIn': loggedIn,
-            'itemList': request.user.student.studentdata_set.all(),
+            'itemList': request.user.student.student_data.all(),
             'addItemForm': forms.InsertData()
             })
 
