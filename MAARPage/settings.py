@@ -90,15 +90,28 @@ WSGI_APPLICATION = 'MAARPage.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mar_core_db',
-        'USER': 'admin',
-        'PASSWORD': 'root@aditya',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'datt3p3h11lshq',
+        'USER': 'mzedsxcplwvfsi',
+        'PASSWORD': 'e3d0028e09ddac82fc0185b5dce1f21a7d10cbd9a599d6a80d8f0b4788de0ef3',
+        'HOST': 'ec2-34-232-147-86.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
+
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'mar_core_db',
+#         'USER': 'admin',
+#         'PASSWORD': 'root@aditya',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation
